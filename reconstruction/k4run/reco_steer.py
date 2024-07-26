@@ -1,3 +1,4 @@
+import os
 from Gaudi.Configuration import *
 
 from Configurables import LcioEvent, EventDataSvc, MarlinProcessorWrapper
@@ -73,7 +74,7 @@ CKFTracking.ProcessorType = "ACTSSeededCKFTrackingProc"
 CKFTracking.Parameters = {
     "CKF_Chi2CutOff": ["10"],
     "CKF_NumMeasurementsCutOff": ["1"],
-    "MatFile": ["/path/to/material-maps.json"],
+    "MatFile": [os.environ.get("ACTS_DATA", "") + "/material-maps.json"],
     "PropagateBackward": ["False"],
     "RunCKF": ["True"],
     "SeedFinding_CollisionRegion": ["3.5"],
@@ -98,7 +99,7 @@ CKFTracking.Parameters = {
         "14", "2", "14", "6", "14", "10", "14", "14", 
         "15", "2", "15", "6", "15", "10", "15", "14",
         ],
-    "TGeoFile": ["/path/to/tgeo.root"],
+    "TGeoFile": [os.environ.get("ACTS_DATA", "") + "/MuColl_v1.root"],
     "TrackCollectionName": ["AllTracks"],
     "TrackerHitCollectionNames": ["VBTrackerHits", "IBTrackerHits", "OBTrackerHits", "VETrackerHits", "IETrackerHits", "OETrackerHits"],
     "CaloFace_Radius": ["1500"],
