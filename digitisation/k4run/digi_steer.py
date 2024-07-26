@@ -1,3 +1,4 @@
+import os
 from Gaudi.Configuration import *
 
 from Configurables import LcioEvent, EventDataSvc, MarlinProcessorWrapper
@@ -14,7 +15,7 @@ DD4hep = MarlinProcessorWrapper("DD4hep")
 DD4hep.OutputLevel = INFO
 DD4hep.ProcessorType = "InitializeDD4hep"
 DD4hep.Parameters = {
-                     "DD4hepXMLFile": ["/path/to/compact/geometry/file.xml"],
+                     "DD4hepXMLFile": [os.environ.get("MUCOLL_GEO")],
                      "EncodingStringParameterName": ["GlobalTrackerReadoutID"]
                      }
 
